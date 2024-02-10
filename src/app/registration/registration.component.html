@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center">REGISTRATION FORM</h1>
+
+      <form #registrationForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- Error message for mandatory fields -->
+        <div class="alert alert-danger"
+          *ngIf="(registrationForm.invalid || !registrationForm.dirty || !registrationForm.touched) && registrationForm.submitted">
+          All marked fields are mandatory to fill.
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="firstName">FirstName*</label>
+              <input type="text" class="form-control" id="firstName" name="firstName"
+                [(ngModel)]="registration.firstName" autocomplete="off" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="lastName">LastName*</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="registration.lastName"
+                autocomplete="off" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+          <label class="mr-3">Gender*</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="male" value="male" name="gender"
+              [(ngModel)]="registration.gender" autocomplete="off" required>
+            <label class="form-check-label mr-3" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="female" value="female" name="gender"
+              [(ngModel)]="registration.gender" autocomplete="off" required>
+            <label class="form-check-label mr-3" for="female">Female</label>
+          </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+          <label for="dob">Date of Birth *</label>
+          <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="registration.dob" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="registration.email" required
+            autocomplete="off">
+        </div>
+
+        <!-- PAN -->
+        <div class="form-group">
+          <label for="pan">PAN *</label>
+          <input type="text" class="form-control" id="pan" name="pan" [(ngModel)]="registration.pan" required
+            autocomplete="off">
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="registration.phone" required
+            autocomplete="off">
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="registration.password"
+            autocomplete="off" required>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password *</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+            [(ngModel)]="registration.confirmPassword" autocomplete="off" required>
+        </div>
+
+        <!-- Country -->
+        <div class="form-group">
+          <label for="country">Country *</label>
+          <select class="form-control" id="country" name="country" [(ngModel)]="registration.country" required>
+            <option value="" disabled>Select Country</option>
+            <option value="{{country}}" *ngFor="let country of countriesList">{{ country }}</option>
+          </select>
+        </div>
+
+        <!-- State -->
+        <div class="form-group">
+          <label for="state">State *</label>
+          <select class="form-control" id="state" name="state" [(ngModel)]="registration.state" required>
+            <option value="" disabled>Select State</option>
+            <option *ngFor="let state of statesList">{{ state }}</option>
+          </select>
+        </div>
+
+        <!-- City -->
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" class="form-control" id="city" name="city" [(ngModel)]="registration.city" required
+            autocomplete="off">
+        </div>
+
+        <!-- <button type="submit" class="btn btn-primary"
+          [disabled]="registrationForm.invalid || (!registrationForm.dirty && registrationForm.touched)">Submit</button> -->
+
+        <!-- <button type="submit" class="btn btn-primary" [disabled]="registrationForm.form.invalid">Submit</button> -->
+
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+
+        <button type="submit" class="btn btn-primary"
+          [disabled]="registrationForm.invalid || !registrationForm.dirty || !registrationForm.touched">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
